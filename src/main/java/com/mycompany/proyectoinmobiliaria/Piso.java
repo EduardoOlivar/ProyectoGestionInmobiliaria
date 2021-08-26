@@ -13,10 +13,11 @@ public class Piso {
         this.numeroDePiso = numeroDePiso;
         this.cantidadDpto = cantidadDpto;
     }
-    public Piso(){}    
-    //aqui iran metodos
-    
-    
+    public Piso(int numeroDepiso, int cantidadDpto){
+        this.numeroDePiso = numeroDePiso;
+        this.cantidadDpto = cantidadDpto; 
+    }    
+    //aqui iran metodos    
     
     
     

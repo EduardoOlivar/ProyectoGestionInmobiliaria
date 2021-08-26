@@ -6,11 +6,13 @@ import java.io.*;
 public class GestionInmobiliaria {
 
     public static void main(String[] args) throws IOException {
-        Edificio[] edificios = new Edificio[1];//String nombre, String localidad, String direccion, String arquitecto
+        Edificio[] edificios = new Edificio[4];//String nombre, String localidad, String direccion, String arquitecto
+     
         
-       
-        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
         
+        
+        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));              
+        // rellenar un arreglo de edificios
         for (int i = 0 ; i < edificios.length ; i++)
         {
             edificios[i] = new Edificio();

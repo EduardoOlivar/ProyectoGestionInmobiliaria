@@ -52,5 +52,26 @@ public class Edificio
     public void setDireccion(String direccion){this.direccion = direccion;}
     public void setArquitecto(String arquitecto){this.arquitecto = arquitecto;}
     
-    
+    public void setPiso(Piso piso)
+    {
+        int i;
+        for(i = 0 ; i < pisos.length && pisos[i] == null ; i++){
+            if( piso.getNumeroDePiso() == pisos[i].getNumeroDePiso())
+            {
+                System.out.println("Ya existe el piso");
+                return;
+            }
+        }
+        if( i == pisos.length)
+        {
+            System.out.println("arreglo completo");
+            return;
+        }
+        pisos[i] = piso;
+        }
+    public void setPiso(int numeroPiso, int cantidadDepto)
+    {
+        Piso piso = new Piso(numeroPiso,cantidadDepto);
+        this.setPiso(piso);
+    }
 }
