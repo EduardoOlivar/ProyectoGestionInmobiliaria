@@ -7,7 +7,7 @@ public class Edificio
     private String localidad;
     private String direccion;
     private String arquitecto;
-    // queria poner aqui una lista o arraylist para los pisos 
+    private Piso[] pisos;
 
     //constructor
     public Edificio(String nombre, String localidad, String direccion, String arquitecto) {
@@ -15,6 +15,7 @@ public class Edificio
         this.localidad = localidad;
         this.direccion = direccion;
         this.arquitecto = arquitecto;
+        this.pisos = new Piso[5];
     }
     public Edificio()
     {
