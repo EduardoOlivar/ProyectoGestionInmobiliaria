@@ -27,7 +27,7 @@ public class GestionInmobiliaria {
             System.out.println("Ingrese Nombre del edificio " + (i+1));
             edificios[i].setNombre(leer.readLine());
             System.out.println("Ingrese localidad del Edificio y su direccion");
-            edificios[i].setLocalidad(leer.readLine());
+            edificios[i].setLocalidad  (leer.readLine());
             edificios[i].setDireccion(leer.readLine());
             System.out.println("Ingrese nombre del Arquitecto");
             edificios[i].setArquitecto(leer.readLine());            

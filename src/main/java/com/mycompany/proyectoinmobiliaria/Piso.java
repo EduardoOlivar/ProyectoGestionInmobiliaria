@@ -5,6 +5,7 @@ package com.mycompany.proyectoinmobiliaria;
 
 
 public class Piso {
+    private String id;
     private String tipoDpto;
     private int numeroDePiso;
     private int cantidadDpto;
@@ -12,6 +13,7 @@ public class Piso {
     
     //constructor
     public Piso(String tipoDpto, int numeroDePiso, int cantidadDpto /*ArrayList<Departamento> departamentos*/) {
+        this.id = id;
         this.tipoDpto = tipoDpto;
         this.numeroDePiso = numeroDePiso;
         this.cantidadDpto = cantidadDpto;
@@ -28,10 +30,12 @@ public class Piso {
     
     
     //getter
+    public String getId() {return id;}
     public String getTipoDpto() {return tipoDpto;}
     public int getNumeroDePiso() {return numeroDePiso;}
     public int getCantidadDpto() {return cantidadDpto;}
     //setter
+    public void setId(String id) {this.id = id;}
     public void setTipoDpto(String tipoDpto) {this.tipoDpto = tipoDpto;}
     public void setNumeroDePiso(int numeroDePiso) {this.numeroDePiso = numeroDePiso;}
     public void setCantidadDpto(int cantidadDpto) {this.cantidadDpto = cantidadDpto;}
