@@ -1,24 +1,30 @@
 
 package com.mycompany.proyectoinmobiliaria;
 
+//import java.util.ArrayList;
+
+
 public class Piso {
     private String tipoDpto;
     private int numeroDePiso;
     private int cantidadDpto;
-    // coleccion de deptos
+    //private  final ArrayList<Departamento> departamentos; 
     
     //constructor
-    public Piso(String tipoDpto, int numeroDePiso, int cantidadDpto) {
+    public Piso(String tipoDpto, int numeroDePiso, int cantidadDpto /*ArrayList<Departamento> departamentos*/) {
         this.tipoDpto = tipoDpto;
         this.numeroDePiso = numeroDePiso;
         this.cantidadDpto = cantidadDpto;
+        //this.departamentos = new ArrayList <>();
     }
-    public Piso(int numeroDepiso, int cantidadDpto){
-        this.numeroDePiso = numeroDePiso;
-        this.cantidadDpto = cantidadDpto; 
-    }    
-    //aqui iran metodos    
     
+    public Piso(){}
+    
+
+    //aqui iran metodos
+    public void mostrarPiso() {
+        System.out.println(this.tipoDpto +  " " + this.numeroDePiso +" "+ this.cantidadDpto);
+    }
     
     
     //getter

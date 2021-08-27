@@ -1,27 +1,29 @@
 
 package com.mycompany.proyectoinmobiliaria;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class Edificio
 {
     private String nombre;
-    private String localidad;
     private String direccion;
+    private String localidad;
     private String arquitecto;
-    private Piso[] pisos;
+    private ArrayList<Piso> listaPiso;
 
     //constructor
-    public Edificio(String nombre, String localidad, String direccion, String arquitecto) {
-        this.nombre = nombre;
-        this.localidad = localidad;
-        this.direccion = direccion;
-        this.arquitecto = arquitecto;
-        this.pisos = new Piso[5];
-    }
-    public Edificio()
+    
+    public Edificio(String nombre, String direccion, String localidad, String arquitecto, ArrayList<Piso> listaPiso)
     {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.localidad = localidad;
+        this.arquitecto = arquitecto;
+        this.listaPiso = new ArrayList<>();
         
     }
-    
+    public Edificio(){}
     //aqui iran metodos
     
     
@@ -33,10 +35,19 @@ public class Edificio
         System.out.println("Nombre del Arquitecto: " + this.arquitecto);
     }
     
+    public void agregarPiso(Piso piso)
+    {
+        this.listaPiso.add(piso);        
+    }    
     
-    
-    
-    
+    public void mostrarPiso()
+    {
+        for(int i = 0 ; i < this.listaPiso.size(); i++)
+        {
+            this.listaPiso.get(i).mostrarPiso();
+        }
+      
+    }  
     
     
     
@@ -52,26 +63,27 @@ public class Edificio
     public void setDireccion(String direccion){this.direccion = direccion;}
     public void setArquitecto(String arquitecto){this.arquitecto = arquitecto;}
     
-    public void setPiso(Piso piso)
+    /*public void setPiso(ArrayList<Piso> listaPiso)
     {
         int i;
-        for(i = 0 ; i < pisos.length && pisos[i] == null ; i++){
-            if( piso.getNumeroDePiso() == pisos[i].getNumeroDePiso())
+        // arreglo compacto, para no salirse de la cantidad definida
+        for(i = 0 ; i < listaPiso.length && listaPiso[i] == null ; i++){
+            if( listaPiso.getNumeroDePiso() == listaPiso[i].getNumeroDePiso())
             {
                 System.out.println("Ya existe el piso");
                 return;
             }
         }
-        if( i == pisos.length)
+        if( i == listaPiso.length)
         {
             System.out.println("arreglo completo");
             return;
         }
-        pisos[i] = piso;
+        listaPiso[i] = listaPiso;
         }
     public void setPiso(int numeroPiso, int cantidadDepto)
     {
-        Piso piso = new Piso(numeroPiso,cantidadDepto);
-        this.setPiso(piso);
-    }
+        Piso listaPiso = new Piso(numeroPiso,cantidadDepto);
+        this.setPiso(listaPiso);
+    }*/
 }

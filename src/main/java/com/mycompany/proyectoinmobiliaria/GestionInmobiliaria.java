@@ -6,48 +6,61 @@ import java.io.*;
 public class GestionInmobiliaria {
 
     public static void main(String[] args) throws IOException {
-        Edificio[] edificios = new Edificio[4];//String nombre, String localidad, String direccion, String arquitecto
-     
+        Edificio [] edificios = new Edificio[1];//String nombre, String localidad, String direccion, String arquitecto
+       
+        
+        llenadoEdificiosPorConsola(edificios);
+        mostrarEdificios(edificios);
+        llenadoPisos(edificios[0]);
+        mostrarPisos(edificios[0]);
         
         
+    }
+    
+    public static void llenadoEdificiosPorConsola(Edificio[] edificios) throws IOException {
         
-        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));              
+           BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));              
         // rellenar un arreglo de edificios
         for (int i = 0 ; i < edificios.length ; i++)
         {
             edificios[i] = new Edificio();
             System.out.println("Ingrese Nombre del edificio " + (i+1));
             edificios[i].setNombre(leer.readLine());
-            System.out.println("Ingrese Localidad del Edificio y direccion");
+            System.out.println("Ingrese localidad del Edificio y su direccion");
             edificios[i].setLocalidad(leer.readLine());
             edificios[i].setDireccion(leer.readLine());
             System.out.println("Ingrese nombre del Arquitecto");
             edificios[i].setArquitecto(leer.readLine());            
-        }
-        
-        for(int i = 0 ; i < edificios.length;i++)
+        }           
+    }
+    public static void mostrarEdificios(Edificio[] edificios)
+    {
+     for(int i = 0 ; i < edificios.length;i++)
         {
             edificios[i].mostrarEdificio();
-        }
-        //depto1.mostrarDepto();
-     
+        }  
+    }
+      
+    public static void llenadoPisos(Edificio edificios) throws IOException{
         
-        // set es para guardar parametros
-        //get para retorna parametros
+        
+        Piso piso1 = new Piso("a",1,4);
+        Piso piso2 = new Piso("b",2,4);
+        Piso piso3 = new Piso("c",3,4);
+        Piso piso4 = new Piso("d",4,4);
+        
+                
+        edificios.agregarPiso(piso1);
+        edificios.agregarPiso(piso2);
+        edificios.agregarPiso(piso3);
+        edificios.agregarPiso(piso4);
+        
         
     }
     
-    
-
-   /*private static void crearEdificios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        
-    }*/
-    
-    
+    public static void mostrarPisos(Edificio hotel) 
+    {
+            hotel.mostrarPiso();
+  
+    }
 }
-
-//String nombre, String localidad, String direccion, String arquitecto
-//Prueba cambio al proyecto por Daniel
-//ola
