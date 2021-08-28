@@ -9,13 +9,18 @@ public class GestionInmobiliaria {
         
         BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Ingrese la cantidad de Edificios que quiera agregar");
-        int cantidad = Integer.parseInt(leer.readLine());       
+        int cantidadEdificio = Integer.parseInt(leer.readLine());
+        int cantidadPiso = Integer.parseInt(leer.readLine());
         
-        Edificio [] edificios = new Edificio[cantidad];//String nombre, String localidad, String direccion, String arquitecto
-       
-        
+        Edificio[] edificios = new Edificio[cantidadEdificio];//String nombre, String localidad, String direccion, String arquitecto
         llenadoEdificiosPorConsola(edificios);
-        mostrarEdificios(edificios);     
+        
+        System.out.println("Ingrese la cantidad de Pisos que quiera agregar");
+        Piso[] piso = new Piso[cantidadPiso];
+        llenadoPiso(piso);
+
+        mostrarEdificios(edificios);
+        
         
     }
     
@@ -46,6 +51,11 @@ public class GestionInmobiliaria {
     public static void llenadoPiso(Piso[] piso) throws IOException
     {
         BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
+        //rellenar un arreglo de piso
+        for(int i = 0 ; i < piso.length ; i++)
+        {
+            
+        }
         
     }
     
