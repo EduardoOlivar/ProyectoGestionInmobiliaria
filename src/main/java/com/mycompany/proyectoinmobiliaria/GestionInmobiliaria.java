@@ -1,3 +1,10 @@
+/*
+Autores:
+    Daniel Duran;
+    José Eduardo Olivar;
+    Paula Vargas
+*/
+
 package com.mycompany.proyectoinmobiliaria;
 
 import java.io.*;
