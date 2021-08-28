@@ -2,27 +2,27 @@
 package com.mycompany.proyectoinmobiliaria;
 
 import java.io.IOException;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Edificio
 {
-    private String id;
+    //private String id;
     private String nombre;
     private String direccion;
     private String localidad;
     private String arquitecto;
-    private ArrayList<Piso> listaPiso;
+    //private ArrayList<Piso> listaPiso;
 
     //constructor
     
-    public Edificio(String id, String nombre, String direccion, String localidad, String arquitecto, ArrayList<Piso> listaPiso)
+    public Edificio(/*String id*/ String nombre, String direccion, String localidad, String arquitecto /*ArrayList<Piso> listaPiso*/)
     {
-        this.id = id;
+        //this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.localidad = localidad;
         this.arquitecto = arquitecto;
-        this.listaPiso = new ArrayList<>();
+       // this.listaPiso = new ArrayList<>();
         
     }
     public Edificio(){}
@@ -55,13 +55,13 @@ public class Edificio
     
 
     //getter
-    public String getId(){return id;}
+    //public String getId(){return id;}
     public String getNombre(){return nombre;}
     public String getLocalidad(){return localidad;}
     public String getDireccion(){return direccion;}
     public String getArquitecto(){return arquitecto;}
     //setter
-    public void setId(String id){this.id = id;}
+    //public void setId(String id){this.id = id;}
     public void setNombre(String nombre){this.nombre = nombre;}
     public void setLocalidad(String localidad){this.localidad = localidad;}
     public void setDireccion(String direccion){this.direccion = direccion;}
