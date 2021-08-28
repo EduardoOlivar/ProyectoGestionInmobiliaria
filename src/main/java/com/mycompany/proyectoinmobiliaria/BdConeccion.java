@@ -1,6 +1,6 @@
 package com.mycompany.proyectoinmobiliaria;
 
-
+// intentamos conectar una bd pero por ahora no nos resulto
 /*import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

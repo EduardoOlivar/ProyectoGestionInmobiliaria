@@ -24,7 +24,7 @@ public class Piso {
 
     //aqui iran metodos
     public void mostrarPiso() {
-        System.out.println("El piso es: " + this.numeroDePiso +  " y la cantidad de departamentos que hay son " + this.cantidadDpto);
+        System.out.println("El piso es: " + this.numeroDePiso +  " y la cantidad de departamentos que hay son " + this.cantidadDpto + "\n\n");
     }
     
     

@@ -27,14 +27,22 @@ public class GestionInmobiliaria {
         Edificio objEdificio1 = new Edificio("10 norte","10 norte 655","Viña del mar","Quiroz y Puelma Arquitectos");
         Edificio objEdificio2 = new Edificio("15 norte","15 norte 242","Viña del mar","Mario Castañeda");
         Edificio objEdificio3 = new Edificio("Viana Miramar","Viana 161","Viña del mar","Roberto Rau");
-
+        objEdificio1.mostrarEdificio();
+        objEdificio2.mostrarEdificio();
+        objEdificio3.mostrarEdificio();
         Piso objPiso1 = new Piso(1,4);
         Piso objPiso2 = new Piso(2,4);
         Piso objPiso3 = new Piso(3,4);
         Piso objPiso4 = new Piso(4,4);
+        objPiso1.mostrarPiso();
+        objPiso2.mostrarPiso();
+        objPiso3.mostrarPiso();
+        objPiso4.mostrarPiso();
         
         Departamento objDepartamento1 = new Departamento ("22A","3000UF","Poniente",2,3,67);
         Departamento objDepartamento2 = new Departamento("51A","3500UF","oriente",2,3,109);
+        objDepartamento1.mostrarDpto();
+        objDepartamento2.mostrarDpto();
         
     }
     

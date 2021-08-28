@@ -21,9 +21,16 @@ public class Departamento {
         this.metrosCuadrados = metrosCuadrados;
     }
     public Departamento(){}
+    
     //aqui iran metodos
     
-    
+    //numero Dpto, ValorDpto, orientacion,cantidadbaños,cantidadDormitorios,metroscuadrados
+    public void mostrarDpto()
+    {
+        System.out.println("El numero del departamento es: " + this.numeroDpto + " tiene un valor de: "+ this.valorDpto);
+        System.out.println("Su orientación es: " + this.orientacion);
+        System.out.println("Tiene "+ this.cantidadBaños +" baños y " + this.cantidadDormitorios + " dormitorios, con una cantidad de " + this.metrosCuadrados +" metros cuadrados\n\n");
+    }
     
     
     

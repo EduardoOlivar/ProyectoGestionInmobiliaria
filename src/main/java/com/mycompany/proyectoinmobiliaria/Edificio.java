@@ -67,6 +67,9 @@ public class Edificio
     public void setDireccion(String direccion){this.direccion = direccion;}
     public void setArquitecto(String arquitecto){this.arquitecto = arquitecto;}
     
+    
+    
+    //por ahora el arraylist no esta incorporado.
     /*public void setPiso(ArrayList<Piso> listaPiso)
     {
         int i;
