@@ -6,17 +6,20 @@ import java.io.*;
 public class GestionInmobiliaria {
 
     public static void main(String[] args) throws IOException {
-        Edificio [] edificios = new Edificio[1];//String nombre, String localidad, String direccion, String arquitecto
+        
+        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Ingrese la cantidad de Edificios que quiera agregar");
+        int cantidad = Integer.parseInt(leer.readLine());       
+        
+        Edificio [] edificios = new Edificio[cantidad];//String nombre, String localidad, String direccion, String arquitecto
        
         
         llenadoEdificiosPorConsola(edificios);
-        mostrarEdificios(edificios);
-        llenadoPisos(edificios[0]);
-        mostrarPisos(edificios[0]);
-        
+        mostrarEdificios(edificios);     
         
     }
     
+    // metodo para agregar lista de Edificios.
     public static void llenadoEdificiosPorConsola(Edificio[] edificios) throws IOException {
         
            BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));              
@@ -40,8 +43,15 @@ public class GestionInmobiliaria {
             edificios[i].mostrarEdificio();
         }  
     }
-      
-    public static void llenadoPisos(Edificio edificios) throws IOException{
+    public static void llenadoPiso(Piso[] piso) throws IOException
+    {
+        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
+        
+    }
+    
+    
+    //metodos para mas la proxima entrega para las anidaciones
+    /*public static void llenadoPisos(Edificio edificios) throws IOException{
         
         
         Piso piso1 = new Piso("a",1,4);
@@ -62,5 +72,5 @@ public class GestionInmobiliaria {
     {
             hotel.mostrarPiso();
   
-    }
+    }*/
 }

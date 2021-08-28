@@ -34,22 +34,22 @@ public class Edificio
     {
         System.out.println("Nombre del Edificio u Hotel: " + this.nombre);
         System.out.println("Direccion: " + this.direccion + ", localidad: " + this.localidad);
-        System.out.println("Nombre del Arquitecto: " + this.arquitecto);
+        System.out.println("Nombre del Arquitecto: " + this.arquitecto + "\n\n");
     }
     
-    public void agregarPiso(Piso piso)
+   /* public void agregarPiso(Piso piso)
     {
         this.listaPiso.add(piso);        
-    }    
+    }*/    
     
-    public void mostrarPiso()
+    /*public void mostrarPiso()
     {
         for(int i = 0 ; i < this.listaPiso.size(); i++)
         {
             this.listaPiso.get(i).mostrarPiso();
         }
       
-    }  
+    }*/ 
     
     
     

@@ -9,23 +9,23 @@ public class Piso {
     private String tipoDpto;
     private int numeroDePiso;
     private int cantidadDpto;
-    //private  final ArrayList<Departamento> departamentos; 
+    //private  final ArrayList<Departamento> departamentos; <-- luego una lista para agregar departamentos a los pisos
     
     //constructor
-    public Piso(String tipoDpto, int numeroDePiso, int cantidadDpto /*ArrayList<Departamento> departamentos*/) {
+    public Piso(String id,String tipoDpto, int numeroDePiso, int cantidadDpto /*ArrayList<Departamento> departamentos*/) {
         this.id = id;
         this.tipoDpto = tipoDpto;
         this.numeroDePiso = numeroDePiso;
         this.cantidadDpto = cantidadDpto;
         //this.departamentos = new ArrayList <>();
     }
-    
+    //constructor vacio
     public Piso(){}
     
 
     //aqui iran metodos
     public void mostrarPiso() {
-        System.out.println(this.tipoDpto +  " " + this.numeroDePiso +" "+ this.cantidadDpto);
+        System.out.println( this.id + " " + this.tipoDpto +  " " + this.numeroDePiso + " " + this.cantidadDpto);
     }
     
     
