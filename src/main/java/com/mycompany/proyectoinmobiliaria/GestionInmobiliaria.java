@@ -116,34 +116,7 @@ public class GestionInmobiliaria {
           piso[i].mostrarPiso();
       }
    }
-   
-   
-   
-    
-    
-    //metodos para la proxima entrega en donde se incorporen anidaciones, no esta bien escrito e instanciado pero ahi se esta estudiando
-    /*public static void llenadoPisos(Edificio edificios) throws IOException{
-        
-        
-        Piso piso1 = new Piso("a",1,4);
-        Piso piso2 = new Piso("b",2,4);
-        Piso piso3 = new Piso("c",3,4);
-        Piso piso4 = new Piso("d",4,4);
-        
-                
-        edificios.agregarPiso(piso1);
-        edificios.agregarPiso(piso2);
-        edificios.agregarPiso(piso3);
-        edificios.agregarPiso(piso4);
-        
-        
-    }
-    
-    public static void mostrarPisos(Edificio hotel) 
-    {
-            hotel.mostrarPiso();
-  
-    }*/
+
 }
 
     
