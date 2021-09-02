@@ -37,19 +37,19 @@ public class GestionInmobiliaria {
         mostrarPiso(piso);
         
         /*Parametros para objetos iniciales de clase Edificio*/
-        Edificio objEdificio1 = new Edificio("10 norte","10 norte 655","Viña del mar","Quiroz y Puelma Arquitectos");
-        Edificio objEdificio2 = new Edificio("15 norte","15 norte 242","Viña del mar","Mario Castañeda");
-        Edificio objEdificio3 = new Edificio("Viana Miramar","Viana 161","Viña del mar","Roberto Rau");
+        Edificio objEdificio1 = new Edificio("132123","10 norte","10 norte 655","Viña del mar","Quiroz y Puelma Arquitectos");
+        Edificio objEdificio2 = new Edificio("123123","15 norte","15 norte 242","Viña del mar","Mario Castañeda");
+        Edificio objEdificio3 = new Edificio("12222","Viana Miramar","Viana 161","Viña del mar","Roberto Rau");
         /*Mostrar por pantalla los objetos iniciales*/
         objEdificio1.mostrarEdificio();
         objEdificio2.mostrarEdificio();
         objEdificio3.mostrarEdificio();
         
         /*Parametros para objetos iniciales de clase Piso*/
-        Piso objPiso1 = new Piso(1,4);
-        Piso objPiso2 = new Piso(2,4);
-        Piso objPiso3 = new Piso(3,4);
-        Piso objPiso4 = new Piso(4,4);
+        Piso objPiso1 = new Piso(12221,1,4);
+        Piso objPiso2 = new Piso(122212,2,4);
+        Piso objPiso3 = new Piso(12121,3,4);
+        Piso objPiso4 = new Piso(123123,4,4);
         /*Mostrar por pantalla los objetos iniciales*/
         objPiso1.mostrarPiso();
         objPiso2.mostrarPiso();

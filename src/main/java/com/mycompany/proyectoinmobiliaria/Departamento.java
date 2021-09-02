@@ -2,6 +2,7 @@
 package com.mycompany.proyectoinmobiliaria;
 
 public class Departamento {
+    private String rol;
     private String numeroDpto;
     private String valorDpto;
     private String orientacion;
