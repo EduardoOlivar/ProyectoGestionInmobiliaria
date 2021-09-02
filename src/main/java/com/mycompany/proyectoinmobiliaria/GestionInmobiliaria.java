@@ -46,23 +46,22 @@ public class GestionInmobiliaria {
         objEdificio3.mostrarEdificio();
         
         /*Parametros para objetos iniciales de clase Piso*/
-        Piso objPiso1 = new Piso(12221,1,4);
-        Piso objPiso2 = new Piso(122212,2,4);
-        Piso objPiso3 = new Piso(12121,3,4);
-        Piso objPiso4 = new Piso(123123,4,4);
+        Piso objPiso1 = new Piso("12221",1,4);
+        Piso objPiso2 = new Piso("122212",2,4);
+        Piso objPiso3 = new Piso("12121",3,4);
+        Piso objPiso4 = new Piso("123123",4,4);
         /*Mostrar por pantalla los objetos iniciales*/
         objPiso1.mostrarPiso();
         objPiso2.mostrarPiso();
         objPiso3.mostrarPiso();
         objPiso4.mostrarPiso();
         /*Parametros para objetos iniciales de clase Departamento*/
-        Departamento objDepartamento1 = new Departamento ("22A","3000UF","Poniente",2,3,67);
-        Departamento objDepartamento2 = new Departamento("51A","3500UF","oriente",2,3,109);
+        Departamento objDepartamento1 = new Departamento ("bb","22A","3000UF","Poniente",2,3,67);
+        Departamento objDepartamento2 = new Departamento("aa","51A","3500UF","oriente",2,3,109);
         
         /*Mostrar por pantalla los objetos iniciales*/
         objDepartamento1.mostrarDpto();
-        objDepartamento2.mostrarDpto();
-        
+        objDepartamento2.mostrarDpto();        
     }
     
     /* metodo para agregar Edificios por consola.*/

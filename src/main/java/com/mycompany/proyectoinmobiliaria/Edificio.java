@@ -22,7 +22,7 @@ public class Edificio
         this.direccion = direccion;
         this.localidad = localidad;
         this.arquitecto = arquitecto;
-        this.listaPiso = new ArrayList<>();
+        this.listaPiso = new ArrayList<>(); // por ahora ira asi para poder hacer el entregable 2
              
     }
     public Edificio(){}
@@ -32,10 +32,37 @@ public class Edificio
     //metodo para mostrar 
     public void mostrarEdificio()
     {
+        System.out.println("Rol unico del Edificio: " + this.id);
         System.out.println("Nombre del Edificio u Hotel: " + this.nombre);
         System.out.println("Direccion: " + this.direccion + ", localidad: " + this.localidad);
         System.out.println("Nombre del Arquitecto: " + this.arquitecto + "\n\n");
-    }     
+    }
+    
+    public void agregarPiso(Piso piso)
+    {
+        this.listaPiso.add(piso);
+    }
+    
+    public void mostrarPiso()
+    {
+        for(int i = 0 ; i < this.listaPiso.size(); i++)
+        {
+            this.listaPiso.get(i).mostrarDepto();
+        }
+    }
+    
+    public void mostrarPiso(String id)
+    {
+        for(int i = 0; i < this.listaPiso.size();i++)
+        {
+            if(this.listaPiso.get(i).getIdPiso().equals(id))
+            {
+              this.listaPiso.get(i).mostrarPiso();
+            }
+            
+        }
+    }
+    
     
 
     //getter
