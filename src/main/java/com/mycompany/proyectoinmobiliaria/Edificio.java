@@ -51,15 +51,14 @@ public class Edificio
         }
     }
     
-    public void mostrarPiso(String id)
+    public void mostrarPiso(int numero)
     {
         for(int i = 0; i < this.listaPiso.size();i++)
         {
-            if(this.listaPiso.get(i).getIdPiso().equals(id))
+            if(this.listaPiso.get(i).getNumeroDePiso()==numero)
             {
-              this.listaPiso.get(i).mostrarPiso();
-            }
-            
+              this.listaPiso.get(i).mostrarDepto();
+            }            
         }
     }
     
