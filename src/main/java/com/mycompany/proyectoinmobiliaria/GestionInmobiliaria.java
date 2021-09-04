@@ -22,8 +22,8 @@ public class GestionInmobiliaria {
         while(mostrarMenu){
             System.out.println("(1) Agregar Edificio");
             System.out.println("(2) Agregar Departamento");
-            System.out.println("(3) Agregar Edifcios predeterminador");
-            System.out.println("(4) Agregar Departamentos predeterminador");
+            System.out.println("(3) Agregar Edifcios predeterminados");
+            System.out.println("(4) Agregar Departamentos predeterminados");
             System.out.println("(5) Mostrar listado de Edificios");
             System.out.println("(6) Mostrar todos los departamentos");
             System.out.println("(7) Eliminar Edificio");

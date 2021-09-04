@@ -54,12 +54,24 @@ public class Edificio
             this.agregarDepartamento(departamentos.get(i));
         }
     }
-
+    public void eliminarDepartamentos(){
+             departamentosId = new HashMap();
+             departamentos = new ArrayList();
+    }
     public void mostrarDepartamento(){
         int i;
         System.out.println("Lista de Departamentos");
         for (i = 0; i < departamentos.size(); i++) {
             System.out.println("Numero Dpto: "+departamentos.get(i).getNumeroDpto()+"Orientacion:  "+departamentos.get(i).getOrientacion()+"Valor(UF): "+departamentos.get(i).getValorDpto()+"Cantidad de baños: "+departamentos.get(i).getCantidadBaños()+"Cantidad de dormitorios: "+departamentos.get(i).getCantidadDormitorios()+"Metros cuadrado: "+departamentos.get(i).getMetrosCuadrados());                    
+        }
+    }
+    public void BuscarDepartamento(String idDepartamento){
+        int i;
+        for(i = 0; i<departamentos.size();i++){
+            if(departamentos.get(i).getIdDepartamento().equals(idDepartamento)){
+                System.out.println("codigo: Numero de piso     numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
+                System.out.println("     "+departamentos.get(i).getIdDepartamento()+":            "+departamentos.get(i).getNumeroPiso()+ "               "+departamentos.get(i).getNumeroDpto()+"                              "+departamentos.get(i).getValorDpto()+"                       "+departamentos.get(i).getOrientacion()+"                         "+departamentos.get(i).getCantidadBaños()+"                               "+departamentos.get(i).getCantidadDormitorios()+"                          "+departamentos.get(i).getMetrosCuadrados());
+            }
         }
     }
     public boolean existeDepartamento(String idDepartamento){return departamentosId.containsKey(idDepartamento);}

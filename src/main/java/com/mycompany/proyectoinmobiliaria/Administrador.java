@@ -16,8 +16,6 @@ public class Administrador {
     public Administrador() {
         listaEdificio = new ArrayList();
         edificiosId = new HashMap();
-        CatDepartamentos = new ArrayList();
-        CatDepartamentosId= new HashMap();
         idEdificio = 0;
         idDepartamento = 0;
     }
@@ -63,26 +61,18 @@ public class Administrador {
     
     public void BuscarDepartamento(String idDepartamento){
         int i;
-        for(i = 0; i<CatDepartamentos.size();i++){
-            if(CatDepartamentos.get(i).getIdDepartamento().equals(idDepartamento)){
-                System.out.println("codigo: Numero de piso     numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
-                System.out.println("     "+CatDepartamentos.get(i).getIdDepartamento()+":            "+CatDepartamentos.get(i).getNumeroPiso()+ "               "+CatDepartamentos.get(i).getNumeroDpto()+"                              "+CatDepartamentos.get(i).getValorDpto()+"                       "+CatDepartamentos.get(i).getOrientacion()+"                         "+CatDepartamentos.get(i).getCantidadBaños()+"                               "+CatDepartamentos.get(i).getCantidadDormitorios()+"                          "+CatDepartamentos.get(i).getMetrosCuadrados());
-            }
+        for(i = 0; i<listaEdificio.size();i++){
+            listaEdificio.get(i).BuscarDepartamento(idDepartamento);
         }
     }
     
     public void agregarDepartamentoAedificio(String idEdificio,String numeroPiso,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados){
         if(edificiosId.containsKey(idEdificio)){         
             this.idDepartamento = this.idDepartamento + 1;
-            Departamento nuevoDepartamento = new Departamento(String.valueOf(idDepartamento),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
-            CatDepartamentosId.put(nuevoDepartamento.getIdDepartamento(), nuevoDepartamento);
-            CatDepartamentos.add(nuevoDepartamento);
-                
+            Departamento nuevoDepartamento = new Departamento(String.valueOf(idDepartamento),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);                
             edificiosId.get(idEdificio).agregarDepartamento(String.valueOf(idDepartamento),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
             System.out.println("El codigo del departamento "+nuevoDepartamento.getNumeroDpto()+" es: " +idDepartamento);
-            return;
-             
-            
+            return;           
         }
     }
     
@@ -102,7 +92,7 @@ public class Administrador {
         }
     }
     
-    public void mostrarTodosLosDepartamentos(){
+ /*   public void mostrarTodosLosDepartamentos(){
         if(listaEdificio.isEmpty()){
             System.out.println("No existen Edifcios, por lo tanto, tampoco departamentos");
             return;
@@ -130,7 +120,7 @@ public class Administrador {
             }
         }
     }
-    
+    */
     public Edificio  eliminarEdificio(String idEdificio){
         if(!edificiosId.containsKey(idEdificio)){
             System.out.println("No existe un Edificio con el codigo ingresado");
@@ -140,18 +130,17 @@ public class Administrador {
         if(listaEdificio.size()<2){
             System.out.println("no existe otro edificio, por lo que todos los datos seran eliminados");
             Edificio edificioEliminado = edificiosId.remove(idEdificio);
-        int i;
-        for (i = 0; i < listaEdificio.size(); i++) {
-            if(listaEdificio.get(i).getId().equals(idEdificio)){
-                listaEdificio.remove(i);
-                break;
+            int i;
+            for (i = 0; i < listaEdificio.size(); i++) {
+                if(listaEdificio.get(i).getId().equals(idEdificio)){
+                    listaEdificio.remove(i);
+                    break;
+                }
             }
-        }
-            CatDepartamentosId = new HashMap();
-            CatDepartamentos = new ArrayList();
-            this.idEdificio = 0;
-            this.idDepartamento = 0;
-            return edificioEliminado;
+                listaEdificio.get(i).eliminarDepartamentos();
+                this.idEdificio = 0;
+                this.idDepartamento = 0;
+                return edificioEliminado;
             
         }
         Edificio edificioEliminado = edificiosId.remove(idEdificio);
@@ -165,21 +154,15 @@ public class Administrador {
         }
         return edificioEliminado;
     }
-
+ 
+    public void mostrarTodosLosDepartamentos(){
+        for (int i = 0; i < listaEdificio.size(); i++) {
+            listaEdificio.get(i).mostrarDepartamento();
+        }
+    }
+    
     public ArrayList<Edificio> getListaEdificio() {
         return listaEdificio;
-    }
-
-    public HashMap<String, Edificio> getEdificiosId() {
-        return edificiosId;
-    }
-
-    public HashMap<String, Departamento> getCatDepartamentosId() {
-        return CatDepartamentosId;
-    }
-
-    public ArrayList<Departamento> getCatDepartamentos() {
-        return CatDepartamentos;
     }
 
     public int getIdEdificio() {
@@ -189,14 +172,6 @@ public class Administrador {
 
     public int getIdDepartamento() {
         return idDepartamento;
-    }
-
-    public void setListaEdificio(ArrayList<Edificio> listaEdificio) {
-        this.listaEdificio = listaEdificio;
-    }
-
-    public void setEdificiosId(HashMap<String, Edificio> edificiosId) {
-        this.edificiosId = edificiosId;
     }
 
     public void setCatDepartamentosId(HashMap<String, Departamento> CatDepartamentosId) {
