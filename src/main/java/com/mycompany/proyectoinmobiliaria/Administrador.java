@@ -7,8 +7,7 @@ public class Administrador {
     
     private ArrayList<Edificio> listaEdificio;
     private HashMap<String,Edificio>edificiosId;
-    private HashMap<String,Departamento>CatDepartamentosId;
-    private ArrayList<Departamento>CatDepartamentos;
+
     
     private int idEdificio;
     private int idDepartamento;
@@ -49,16 +48,7 @@ public class Administrador {
         }
         return false;        
     }    
-    public String existeDepartamento(String numeroDpto, String idEdificio){
-        int i;
-        for(i=0; i<CatDepartamentos.size();i++){
-            if(CatDepartamentos.get(i).getNumeroDpto().equals(numeroDpto) && listaEdificio.get(i).getId().equals(idEdificio)){
-                return CatDepartamentos.get(i).getIdDepartamento();
-            }
-        }
-        return"x";
-    }
-    
+
     public void BuscarDepartamento(String idDepartamento){
         int i;
         for(i = 0; i<listaEdificio.size();i++){
@@ -92,35 +82,6 @@ public class Administrador {
         }
     }
     
- /*   public void mostrarTodosLosDepartamentos(){
-        if(listaEdificio.isEmpty()){
-            System.out.println("No existen Edifcios, por lo tanto, tampoco departamentos");
-            return;
-        }
-        if(CatDepartamentos.isEmpty()){
-            System.out.println("No existen Departamentos");
-            return;
-        }
-        int i;
-        int j;
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("codigo: Numero de piso         numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
-        System.out.println("Disponible en el edificio:");
-        System.out.println("codigo: nombre edifciio             direccion          localidad           arquitecto");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        
-        for(i = 0; i<CatDepartamentos.size();i++){
-            System.out.println("     :"+CatDepartamentos.get(i).getIdDepartamento()+"            "+CatDepartamentos.get(i).getNumeroPiso() +"           "+CatDepartamentos.get(i).getNumeroDpto()+"                              "+CatDepartamentos.get(i).getValorDpto()+"                       "+CatDepartamentos.get(i).getOrientacion()+"                         "+CatDepartamentos.get(i).getCantidadBaños()+"                               "+CatDepartamentos.get(i).getCantidadDormitorios()+"                          "+CatDepartamentos.get(i).getMetrosCuadrados());
-            
-            for(j=0;j<listaEdificio.size();j++){
-                Departamento departamento = listaEdificio.get(j).buscarDepartamento(CatDepartamentos.get(i).getIdDepartamento());
-                if(departamento != null){
-                    System.out.println("    "+listaEdificio.get(j).getId()+":    "+listaEdificio.get(j).getNombre()+"              "+listaEdificio.get(j).getDireccion()+"       "+listaEdificio.get(j).getLocalidad()+"       "+listaEdificio.get(j).getArquitecto()+"   ");
-                }
-            }
-        }
-    }
-    */
     public Edificio  eliminarEdificio(String idEdificio){
         if(!edificiosId.containsKey(idEdificio)){
             System.out.println("No existe un Edificio con el codigo ingresado");
@@ -174,13 +135,9 @@ public class Administrador {
         return idDepartamento;
     }
 
-    public void setCatDepartamentosId(HashMap<String, Departamento> CatDepartamentosId) {
-        this.CatDepartamentosId = CatDepartamentosId;
-    }
 
-    public void setCatDepartamentos(ArrayList<Departamento> CatDepartamentos) {
-        this.CatDepartamentos = CatDepartamentos;
-    }
+
+
 
     public void setIdEdificio(int idEdificio) {
         this.idEdificio = idEdificio;
