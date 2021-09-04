@@ -8,139 +8,162 @@ Autores:
 package com.mycompany.proyectoinmobiliaria;
 
 import java.io.*;
-import java.util.ArrayList;
 
 
 public class GestionInmobiliaria {
-
-    public static void main(String[] args) throws IOException 
-    {
-        ArrayList<Edificio> edificios = new ArrayList();
-        
-        System.out.println("Buenos Dias");
-        System.out.println("¿Qué desea hacer?");
-        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
+    static Administrador administrador = new Administrador();//Contiene informacion de todos los edificios
+   
+    public static void main(String[] args) throws IOException{
+        BufferedReader lectura = new BufferedReader(new InputStreamReader( System.in ));
         boolean mostrarMenu = true;
         
-         while(mostrarMenu){
-            System.out.println("(1)  Agregar Edificio");
-            System.out.println("(2)  Buscar  Edificio");
-            System.out.println("(3)  Modificar Edificio");
-            System.out.println("(4)  Quitar  Edificio");
-            System.out.println("(5)  Buscar  Departamento");
+        while(mostrarMenu){
+            System.out.println("(1) Agregar Edificio");
+            System.out.println("(2) Agregar Departamento");
+            System.out.println("(3) Agregar Edifcios predeterminador");
+            System.out.println("(4) Agregar Departamentos predeterminador");
+            System.out.println("(5) Mostrar listado de Edificios");
+            System.out.println("(6) Mostrar todos los departamentos");
+            System.out.println("(7) Eliminar Edificio");
+            System.out.println("(8) Buscar Departamento");
+            
             System.out.println("presione x para salir");
             
-            String eleccion = leer.readLine(); 
+            String eleccion = lectura.readLine();
             
             switch(eleccion){
                 case "1":
-                        agregarEdificio();
-                        break;
+                    agregarEdifcio();
+                    break;
                 case "2":
-                        buscarEdificio();
-                        break;
+                    agregarDepartamento();
+                    break;
                 case "3":
-                        modificarEdificio();
-                        break;
+                    llenadoDeEdifcios();
+                    break;
                 case "4":
-                        quitarEdificio();
-                        break;
+                    llenadoDeDepartamentos();
+                    break;
                 case "5":
-                        buscarDepartamento();
-                        break;
+                    mostrarListadoDeEdifcios();
+                    break;
+                case "6":
+                    mostrarTodosLosDepartamentos();   
+                    break;
+                case "7":
+                    eliminarEdificio();
+                    break;
+                case "8":
+                    buscarDepartamento();
+                    break;                    
                 case "x":
-                        System.out.println("Adios!!");
-                        mostrarMenu = false;
-                        break;
+                    System.out.println("Nos vemos!");
+                    mostrarMenu = false;
+                    break;
                 default:
-                        System.out.println("La opción ingresada no es válida");
-                        break;
-            }   
+                    System.out.println("La opcion ingresada no es valida");
+                    break;
+            }
         }
-    }
+        
     }
     
-    /* metodo para agregar Edificios por consola.*/
-    public static void llenadoEdificiosPorConsola(ArrayList<Edificio> edificios) throws IOException 
-    {
-        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
-                       
-        // rellenar un arreglo de edificios
-        for (int i = 0 ; i < edificios.size() ; i++)
-        {
-            Edificio edificio = new Edificio();
-            System.out.println("Ingrese Nombre del edificio " + (i+1));
-            edificio.setNombre(leer.readLine());
-            System.out.println("Ingrese localidad del Edificio y su direccion");
-            edificio.setLocalidad  (leer.readLine());
-            edificio.setDireccion(leer.readLine());
-            System.out.println("Ingrese nombre del Arquitecto");
-            edificio.setArquitecto(leer.readLine());            
-        }           
+    public static void agregarEdifcio()throws IOException{
+        BufferedReader lectura = new  BufferedReader( new InputStreamReader( System.in));
+        
+        System.out.println("Ingrese nombre del edificio");
+        String nombreEdificio = lectura.readLine();
+        System.out.println("Ingrese direccion del edificio");
+        String direccionEdificio = lectura.readLine();   
+        System.out.println("Ingrese localidad del edificio");
+        String localidadEdificio = lectura.readLine();
+        System.out.println("Ingrese arquitecto del edificio");
+        String arquitectoEdificio = lectura.readLine();         
+        
+        administrador.agregarEdificios(nombreEdificio, direccionEdificio, localidadEdificio, arquitectoEdificio);
     }
-       
-    /* metodo para llamar a mostrarEdificio*/
-    public static void mostrarEdificios(ArrayList<Edificio> edificios)
-    {
-        System.out.println("Lista de Edificios");
-        for(int i = 0 ; i < edificios.size();i++)
-        {
-            Edificio edificio = (Edificio)edificios.get(i);
-            edificio.mostrarEdificio();
-        }  
+    
+    public static void agregarDepartamento() throws IOException{
+        if(administrador.vacio()){
+            System.out.println("No existen edificios, no se agregaran departamentos");
+            return;
+        }
+        
+        BufferedReader lectura = new  BufferedReader( new InputStreamReader( System.in));
+        System.out.println("Ingrese el id del edificio al que pertenece el departamento");
+        String idEdificio = lectura.readLine();
+        
+        if(administrador.existeEdifcio(idEdificio)){
+            System.out.println("Ingrese numero de piso en el que se encuentra el departamento");
+            String numeroPiso = lectura.readLine();
+            System.out.println("Ingrese rol del departamento");
+            String rol = lectura.readLine();            
+            System.out.println("Ingrese numero de departamento");
+            String numeroDpto = lectura.readLine();     
+            System.out.println("Ingrese valor en uf del departamento");
+            String valorDpto = lectura.readLine();
+            System.out.println("Ingrese orientacion del departamento");
+            String orientacion = lectura.readLine();
+            System.out.println("Ingrese cantidad de banos del departamento");
+            int cantidadBaños = Integer.parseInt(lectura.readLine());
+            System.out.println("Ingrese cantidad de dormitorios del departamento");
+            int cantidadDormitorios = Integer.parseInt(lectura.readLine());
+            System.out.println("Ingrese los metros cuadrados del departamento");
+            int metrosCuadrados = Integer.parseInt(lectura.readLine());
+            
+            administrador.agregarDepartamentoAedificio(idEdificio, numeroPiso, rol, numeroDpto, valorDpto, orientacion, cantidadBaños, cantidadDormitorios, metrosCuadrados);
+            return;
+        }
+        System.out.println("El edifcio ingresado no existe");
     }
+    
+    public static void llenadoDeDepartamentos(){
+        if(administrador.getListaEdificio().size() >=2){
+            
+            administrador.agregarDepartamentoAedificio("1", "1", "Departamento", "1", "20", "sur", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "1", "Departamento", "2", "20", "sur", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "2", "Departamento", "3", "20", "norte", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "2", "Departamento", "4", "20", "norte", 1, 2, 36);         
+            administrador.agregarDepartamentoAedificio("2", "1", "Departamento", "1", "35", "sur", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "1", "Departamento", "2", "35", "sur", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "2", "Departamento", "3", "35", "norte", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "2", "Departamento", "4", "35", "norte", 2, 3, 56);   
+            return;
+        }
+        System.out.println("Crear primero 2 edificios para acceder a esta opcion");
+    }
+    
+    public static void llenadoDeEdifcios(){
+        administrador.agregarEdificios("Viana Miramar","Viana 161","Viña del mar","Roberto Rau");
+        administrador.agregarEdificios("LADY","15 norte 242","Viña del mar","Mario Castañeda");
+    }
+    
+    public static void mostrarListadoDeEdifcios() {
+        administrador.mostrarNombreEdifcios();
+    }
+    
+    public static void mostrarTodosLosDepartamentos(){
+        administrador.mostrarTodosLosDepartamentos();
+    }
+    
+    public static void eliminarEdificio()throws IOException{
+        if(administrador.vacio()){
+            System.out.println("No existen Edificios");
+            return;
+        }
+        BufferedReader lectura = new  BufferedReader( new InputStreamReader( System.in));
+        System.out.println("Ingrese id del edificio que quiere eliminar");
+        String idEdificio = lectura.readLine();
+        administrador.eliminarEdificio(idEdificio);
+    }
+    
+    public static void buscarDepartamento()throws IOException{
+        BufferedReader lectura = new  BufferedReader( new InputStreamReader( System.in));
+        System.out.println("Ingrese id del departamento que busca");
+        String idDepartamento = lectura.readLine();
+        administrador.BuscarDepartamento(idDepartamento);
+    }
+}    
 
-
-/*
-   Aqui usamos el metodo para pedir datos por consola
-        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Ingrese la cantidad de Edificios que quiera agregar");
-        int cantidadEdificio = Integer.parseInt(leer.readLine());
-        /*instanciador de un arreglo de edificios con la cantidad que el usuario quiera
-        Edificio[] edificios = new Edificio[cantidadEdificio];
-        /*metodo para llenar el arreglo de edificios
-        llenadoEdificiosPorConsola(edificios);
-        
-        System.out.println("Ingrese la cantidad de Pisos que quiera agregar");
-        int cantidadPiso = Integer.parseInt(leer.readLine());
-        /* instanciador de un arreglo de pisos con la cantidad que el usuario quiera
-        Piso[] piso = new Piso[cantidadPiso];
-        /*metodo para llenar el arreglo de pisos
-        llenadoPiso(piso);
-        
-        /*metodos para mostrar por pantalla los objetos que el usuario incorpore
-          en un arreglo de tipo edificio y en un arreglo de tipo piso
-        
-        mostrarEdificios(edificios);
-        mostrarPiso(piso);
-        
-        /*Parametros para objetos iniciales de clase Edificio
-        Edificio objEdificio1 = new Edificio("132123","10 norte","10 norte 655","Viña del mar","Quiroz y Puelma Arquitectos");
-        Edificio objEdificio2 = new Edificio("123123","15 norte","15 norte 242","Viña del mar","Mario Castañeda");
-        Edificio objEdificio3 = new Edificio("12222","Viana Miramar","Viana 161","Viña del mar","Roberto Rau");
-        /*Mostrar por pantalla los objetos iniciales
-        objEdificio1.mostrarEdificio();
-        objEdificio2.mostrarEdificio();
-        objEdificio3.mostrarEdificio();
-        
-        /*Parametros para objetos iniciales de clase Piso
-        Piso objPiso1 = new Piso("12221",1,4);
-        Piso objPiso2 = new Piso("122212",2,4);
-        Piso objPiso3 = new Piso("12121",3,4);
-        Piso objPiso4 = new Piso("123123",4,4);
-        /*Mostrar por pantalla los objetos iniciales
-        objPiso1.mostrarPiso();
-        objPiso2.mostrarPiso();
-        objPiso3.mostrarPiso();
-        objPiso4.mostrarPiso();
-        /*Parametros para objetos iniciales de clase Departamento
-        Departamento objDepartamento1 = new Departamento ("bb","22A","3000UF","Poniente",2,3,67);
-        Departamento objDepartamento2 = new Departamento("aa","51A","3500UF","oriente",2,3,109);
-        
-        /*Mostrar por pantalla los objetos iniciales
-        objDepartamento1.mostrarDpto();
-        objDepartamento2.mostrarDpto();   
-*/
-}
 
     
