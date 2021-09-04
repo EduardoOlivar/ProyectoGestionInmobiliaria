@@ -63,27 +63,24 @@ public class Administrador {
     
     public void BuscarDepartamento(String idDepartamento){
         int i;
-        System.out.println("codigo: Numero de piso         rol         numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
         for(i = 0; i<CatDepartamentos.size();i++){
             if(CatDepartamentos.get(i).getIdDepartamento().equals(idDepartamento)){
-                System.out.println("     "+CatDepartamentos.get(i).getIdDepartamento()+":            "+CatDepartamentos.get(i).getNumeroPiso()+"        "+CatDepartamentos.get(i).getRol()+"               "+CatDepartamentos.get(i).getNumeroDpto()+"                              "+CatDepartamentos.get(i).getValorDpto()+"                       "+CatDepartamentos.get(i).getOrientacion()+"                         "+CatDepartamentos.get(i).getCantidadBaños()+"                               "+CatDepartamentos.get(i).getCantidadDormitorios()+"                          "+CatDepartamentos.get(i).getMetrosCuadrados());
+                System.out.println("codigo: Numero de piso     numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
+                System.out.println("     "+CatDepartamentos.get(i).getIdDepartamento()+":            "+CatDepartamentos.get(i).getNumeroPiso()+ "               "+CatDepartamentos.get(i).getNumeroDpto()+"                              "+CatDepartamentos.get(i).getValorDpto()+"                       "+CatDepartamentos.get(i).getOrientacion()+"                         "+CatDepartamentos.get(i).getCantidadBaños()+"                               "+CatDepartamentos.get(i).getCantidadDormitorios()+"                          "+CatDepartamentos.get(i).getMetrosCuadrados());
             }
         }
     }
     
-    public void agregarDepartamentoAedificio(String idEdificio,String numeroPiso,String rol,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados){
-        if(edificiosId.containsKey(idEdificio)){
-            
-            
-            
-                this.idDepartamento = this.idDepartamento + 1;
-                Departamento nuevoDepartamento = new Departamento(String.valueOf(idDepartamento),numeroPiso,rol,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
-                CatDepartamentosId.put(nuevoDepartamento.getIdDepartamento(), nuevoDepartamento);
-                CatDepartamentos.add(nuevoDepartamento);
+    public void agregarDepartamentoAedificio(String idEdificio,String numeroPiso,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados){
+        if(edificiosId.containsKey(idEdificio)){         
+            this.idDepartamento = this.idDepartamento + 1;
+            Departamento nuevoDepartamento = new Departamento(String.valueOf(idDepartamento),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
+            CatDepartamentosId.put(nuevoDepartamento.getIdDepartamento(), nuevoDepartamento);
+            CatDepartamentos.add(nuevoDepartamento);
                 
-                edificiosId.get(idEdificio).agregarDepartamento(String.valueOf(idDepartamento),numeroPiso,rol,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
-                System.out.println("El codigo del departamento "+nuevoDepartamento.getNumeroDpto()+" es: " +idDepartamento);
-                return;
+            edificiosId.get(idEdificio).agregarDepartamento(String.valueOf(idDepartamento),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
+            System.out.println("El codigo del departamento "+nuevoDepartamento.getNumeroDpto()+" es: " +idDepartamento);
+            return;
              
             
         }
@@ -99,9 +96,9 @@ public class Administrador {
             return;
         }
         int i;
-        System.out.println("codigo: nombre edifciio             direccion          localidad           arquitecto");
+        System.out.println("codigo:     nombre edifciio        direccion          localidad         arquitecto");
         for(i=0; i<listaEdificio.size(); i++){
-            System.out.println("    "+listaEdificio.get(i).getId()+":    "+listaEdificio.get(i).getNombre()+"       "+listaEdificio.get(i).getDireccion()+"       "+listaEdificio.get(i).getLocalidad()+"       "+listaEdificio.get(i).getArquitecto()+"   ");
+            System.out.println("   "+listaEdificio.get(i).getId()+":-"+listaEdificio.get(i).getNombre()+"           "+listaEdificio.get(i).getDireccion()+"          "+listaEdificio.get(i).getLocalidad()+"       "+listaEdificio.get(i).getArquitecto()+"    ");
         }
     }
     
@@ -117,13 +114,13 @@ public class Administrador {
         int i;
         int j;
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("codigo: Numero de piso         rol         numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
+        System.out.println("codigo: Numero de piso         numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
         System.out.println("Disponible en el edificio:");
         System.out.println("codigo: nombre edifciio             direccion          localidad           arquitecto");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         
         for(i = 0; i<CatDepartamentos.size();i++){
-            System.out.println("     "+CatDepartamentos.get(i).getIdDepartamento()+":            "+CatDepartamentos.get(i).getNumeroPiso()+"        "+CatDepartamentos.get(i).getRol()+"               "+CatDepartamentos.get(i).getNumeroDpto()+"                              "+CatDepartamentos.get(i).getValorDpto()+"                       "+CatDepartamentos.get(i).getOrientacion()+"                         "+CatDepartamentos.get(i).getCantidadBaños()+"                               "+CatDepartamentos.get(i).getCantidadDormitorios()+"                          "+CatDepartamentos.get(i).getMetrosCuadrados());
+            System.out.println("     :"+CatDepartamentos.get(i).getIdDepartamento()+"            "+CatDepartamentos.get(i).getNumeroPiso() +"           "+CatDepartamentos.get(i).getNumeroDpto()+"                              "+CatDepartamentos.get(i).getValorDpto()+"                       "+CatDepartamentos.get(i).getOrientacion()+"                         "+CatDepartamentos.get(i).getCantidadBaños()+"                               "+CatDepartamentos.get(i).getCantidadDormitorios()+"                          "+CatDepartamentos.get(i).getMetrosCuadrados());
             
             for(j=0;j<listaEdificio.size();j++){
                 Departamento departamento = listaEdificio.get(j).buscarDepartamento(CatDepartamentos.get(i).getIdDepartamento());

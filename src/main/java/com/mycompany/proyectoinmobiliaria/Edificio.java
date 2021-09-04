@@ -42,9 +42,9 @@ public class Edificio
         departamentosId.put(departamento.getIdDepartamento(), departamento);
         departamentos.add(departamento);
     }
-    public void agregarDepartamento(String idDepartamento,String numeroPiso,String rol,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados)
+    public void agregarDepartamento(String idDepartamento,String numeroPiso,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados)
     {
-        Departamento departamento = new Departamento(idDepartamento,numeroPiso,rol,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
+        Departamento departamento = new Departamento(idDepartamento,numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
         this.agregarDepartamento(departamento);     
     }   
 

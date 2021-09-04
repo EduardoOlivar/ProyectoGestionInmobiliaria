@@ -11,11 +11,13 @@ import java.io.*;
 
 
 public class GestionInmobiliaria {
-    static Administrador administrador = new Administrador();//Contiene informacion de todos los edificios
-   
+    static Administrador administrador = new Administrador();//Contiene informacion de todos los edificios se hizo como variable global
+    
     public static void main(String[] args) throws IOException{
         BufferedReader lectura = new BufferedReader(new InputStreamReader( System.in ));
         boolean mostrarMenu = true;
+        
+        System.out.println("Bienvenido, ingrese la opcion que desee utilizar");
         
         while(mostrarMenu){
             System.out.println("(1) Agregar Edificio");
@@ -67,7 +69,7 @@ public class GestionInmobiliaria {
         }
         
     }
-    
+    /*metodo para agregar edificios por consola*/
     public static void agregarEdifcio()throws IOException{
         BufferedReader lectura = new  BufferedReader( new InputStreamReader( System.in));
         
@@ -83,16 +85,19 @@ public class GestionInmobiliaria {
         administrador.agregarEdificios(nombreEdificio, direccionEdificio, localidadEdificio, arquitectoEdificio);
     }
     
+    /* agrega departamentos a edificios*/
     public static void agregarDepartamento() throws IOException{
+        /*comprueba si es que hay o no edificios*/
         if(administrador.vacio()){
             System.out.println("No existen edificios, no se agregaran departamentos");
             return;
         }
         
         BufferedReader lectura = new  BufferedReader( new InputStreamReader( System.in));
+        /*Por id se le asignan los departamentos al edificio*/
         System.out.println("Ingrese el id del edificio al que pertenece el departamento");
         String idEdificio = lectura.readLine();
-        
+        /*Se comprueba que exista el edificio y se le agrega departamento al edificio buscado por id*/
         if(administrador.existeEdifcio(idEdificio)){
             System.out.println("Ingrese numero de piso en el que se encuentra el departamento");
             String numeroPiso = lectura.readLine();
@@ -111,23 +116,24 @@ public class GestionInmobiliaria {
             System.out.println("Ingrese los metros cuadrados del departamento");
             int metrosCuadrados = Integer.parseInt(lectura.readLine());
             
-            administrador.agregarDepartamentoAedificio(idEdificio, numeroPiso, rol, numeroDpto, valorDpto, orientacion, cantidadBaños, cantidadDormitorios, metrosCuadrados);
+            administrador.agregarDepartamentoAedificio(idEdificio, numeroPiso, numeroDpto, valorDpto, orientacion, cantidadBaños, cantidadDormitorios, metrosCuadrados);
             return;
         }
         System.out.println("El edifcio ingresado no existe");
     }
     
+    /* Lista de departamentos predeterminados*/
     public static void llenadoDeDepartamentos(){
         if(administrador.getListaEdificio().size() >=2){
             
-            administrador.agregarDepartamentoAedificio("1", "1", "Departamento", "1", "20", "sur", 1, 2, 36);
-            administrador.agregarDepartamentoAedificio("1", "1", "Departamento", "2", "20", "sur", 1, 2, 36);
-            administrador.agregarDepartamentoAedificio("1", "2", "Departamento", "3", "20", "norte", 1, 2, 36);
-            administrador.agregarDepartamentoAedificio("1", "2", "Departamento", "4", "20", "norte", 1, 2, 36);         
-            administrador.agregarDepartamentoAedificio("2", "1", "Departamento", "1", "35", "sur", 2, 3, 56);
-            administrador.agregarDepartamentoAedificio("2", "1", "Departamento", "2", "35", "sur", 2, 3, 56);
-            administrador.agregarDepartamentoAedificio("2", "2", "Departamento", "3", "35", "norte", 2, 3, 56);
-            administrador.agregarDepartamentoAedificio("2", "2", "Departamento", "4", "35", "norte", 2, 3, 56);   
+            administrador.agregarDepartamentoAedificio("1", "1","1", "20", "sur", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "1","2", "20", "sur", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "2","3", "20", "norte", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "2","4", "20", "norte", 1, 2, 36);         
+            administrador.agregarDepartamentoAedificio("2", "1","1", "35", "sur", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "1","2", "35", "sur", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "2","3", "35", "norte", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "2","4", "35", "norte", 2, 3, 56);   
             return;
         }
         System.out.println("Crear primero 2 edificios para acceder a esta opcion");
@@ -157,6 +163,7 @@ public class GestionInmobiliaria {
         administrador.eliminarEdificio(idEdificio);
     }
     
+    /*busca el departamento a partir de la id ingresada*/
     public static void buscarDepartamento()throws IOException{
         BufferedReader lectura = new  BufferedReader( new InputStreamReader( System.in));
         System.out.println("Ingrese id del departamento que busca");

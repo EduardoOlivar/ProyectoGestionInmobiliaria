@@ -4,7 +4,6 @@ package com.mycompany.proyectoinmobiliaria;
 public class Departamento {
     private String idDepartamento;
     private String numeroPiso;
-    private String rol;
     private String numeroDpto;
     private String valorDpto;
     private String orientacion;
@@ -15,10 +14,9 @@ public class Departamento {
     //constructor
     public Departamento(){} 
     
-    public Departamento(String idDepartamento,String numeroPiso,String rol,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados) {
+    public Departamento(String idDepartamento,String numeroPiso,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados) {
         this.idDepartamento = idDepartamento;
         this.numeroPiso = numeroPiso;
-        this.rol = rol;
         this.numeroDpto = numeroDpto;
         this.valorDpto = valorDpto;
         this.orientacion = orientacion;
@@ -39,7 +37,6 @@ public class Departamento {
     //getter
     public String getIdDepartamento(){return idDepartamento;}
     public String getNumeroPiso(){return numeroPiso;}
-    public String getRol(){return rol;}
     public String getNumeroDpto(){return numeroDpto;}
     public String getValorDpto(){return valorDpto;}
     public String getOrientacion(){return orientacion;}
@@ -49,7 +46,6 @@ public class Departamento {
     //setter
     public void setIdDepartamento(String idDepartamento){this.idDepartamento = idDepartamento;}
     public void setNumeroPiso(String numeroPiso){this.numeroPiso = numeroPiso;}
-    public void setRol(String rol){this.rol = rol;}
     public void setNumeroDpto(String numeroDpto){this.numeroDpto = numeroDpto;}
     public void setValorDpto(String valorDpto){this.valorDpto = valorDpto;}
     public void setOrientacion(String orientacion){this.orientacion = orientacion;}
