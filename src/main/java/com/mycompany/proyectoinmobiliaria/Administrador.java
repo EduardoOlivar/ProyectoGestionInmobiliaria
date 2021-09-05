@@ -5,8 +5,8 @@ import java.util.*;
 
 public class Administrador {
     
-    private ArrayList<Edificio> listaEdificio;
-    private HashMap<String,Edificio>edificiosId;    
+    private ArrayList<Edificio> listaEdificio; // lista de edificios
+    private HashMap<String,Edificio>edificiosId; // Mapa EdificiosId que facilita el buscado de edificio por su clave id   
     private int idEdificio;
     private int idDepartamento;
 
@@ -16,7 +16,7 @@ public class Administrador {
         idEdificio = 0;
         idDepartamento = 0;
     }
-    
+    //metodo privado que agregarEdificios,verifica si ya existe el edificio. si no existe los agrega al mapa edficiosId y listaEdificios
     private void agregarEdificios(Edificio edificio){
         if(edificiosId.containsKey(edificio.getId())){
             System.out.println("Edificio " + edificio.getNombre() + "existe");
@@ -27,17 +27,22 @@ public class Administrador {
         System.out.println("El id del edificio  "+edificio.getNombre() + " es: "+edificio.getId());
     }
     
+    //metodo2 que recive la instancia de un edificio nuevo y lo envia por parametro al agregarEdicios metodo 1;
     public void agregarEdificios(String nombre, String direccion, String localidad, String arquitecto){
         this.idEdificio = this.idEdificio + 1;
         Edificio nuevoEdificio = new Edificio(String.valueOf(idEdificio),nombre,direccion,localidad,arquitecto);
         this.agregarEdificios(nuevoEdificio);
     }
-    public void agregaEdificios(ArrayList<Edificio>nuevosEdificios){
-        int i;
-        for (i = 0; i < nuevosEdificios.size(); i++) {
-            this.agregarEdificios(nuevosEdificios.get(i));
+   
+    public void modificarNombreEdificio(String nombre, String idEdificio){
+        for (int i = 0; i < listaEdificio.size(); i++) {
+            if(listaEdificio.get(i).getId().equals(idEdificio)){
+                listaEdificio.get(i).setNombre(nombre);
+                edificiosId.get(idEdificio).setNombre(nombre);
+            }
         }
     }
+    
     public boolean existeDepartamento(String idDepartamento){
         int i;
         for ( i = 0; i < listaEdificio.size(); i++) {
@@ -48,7 +53,7 @@ public class Administrador {
     }    
 
     public void BuscarDepartamento(String idDepartamento){
-        if(listaEdificio.isEmpty()){
+        if(vacio()){
             System.out.println("No existen departamentos");
         }
         else{
@@ -91,7 +96,7 @@ public class Administrador {
             return null;
 
         }
-        if(listaEdificio.size()<2){
+        if(listaEdificio.size()<3){
             System.out.println("no existe otro edificio, por lo que todos los datos seran eliminados");
             Edificio edificioEliminado = edificiosId.remove(idEdificio);
             int i;
@@ -120,12 +125,16 @@ public class Administrador {
     }
  
     public void mostrarTodosLosDepartamentos(){
-        if(listaEdificio.isEmpty()){
+        if(listaEdificio.isEmpty() ){
             System.out.println("No existen departamentos");
         }
         else{
             for (int i = 0; i < listaEdificio.size(); i++) {
-                listaEdificio.get(i).mostrarDepartamento();
+                if(listaEdificio.get(i).getDepartamentos().isEmpty()){
+                    System.out.println("La lista de Departamentos está vacía");
+                    return;
+                }
+                    listaEdificio.get(i).mostrarDepartamento();
             }
         }
     }

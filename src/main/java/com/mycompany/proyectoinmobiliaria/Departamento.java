@@ -24,14 +24,7 @@ public class Departamento {
         this.cantidadDormitorios = cantidadDormitorios;
         this.metrosCuadrados = metrosCuadrados;
     }
-    
-
-   
-    //aqui iran metodos
-    
-    //numero Dpto, ValorDpto, orientacion,cantidadbaños,cantidadDormitorios,metroscuadrados
-
-    
+ 
     
     
     //getter

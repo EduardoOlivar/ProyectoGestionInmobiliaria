@@ -28,6 +28,7 @@ public class GestionInmobiliaria {
             System.out.println("(6) Mostrar todos los departamentos");
             System.out.println("(7) Eliminar Edificio");
             System.out.println("(8) Buscar Departamento");
+            System.out.println("(9) Modificar nombre de Edificio");
             
             System.out.println("presione x para salir");
             
@@ -57,6 +58,9 @@ public class GestionInmobiliaria {
                     break;
                 case "8":
                     buscarDepartamento();
+                    break;
+                case "9":
+                    modificarNombreEdificio();
                     break;                    
                 case "x":
                     System.out.println("Nos vemos!");
@@ -141,20 +145,36 @@ public class GestionInmobiliaria {
         System.out.println("Crear primero 3 edificios para acceder a esta opcion");
     }
     
+    /*Llenado predeterminado*/
     public static void llenadoDeEdifcios(){
         administrador.agregarEdificios("Viana Miramar","Viana 161","Viña del mar","Roberto Rau");
         administrador.agregarEdificios("LADY","15 norte 242","Viña del mar","Mario Castañeda");
         administrador.agregarEdificios("10 norte","10 norte 655","Viña del mar","Quiroz y Puelma Arquitectos");
     }
     
+    /*muestrra la lista de edificios si es que hay*/
     public static void mostrarListadoDeEdifcios() {
         administrador.mostrarNombreEdifcios();
     }
-    
+    /*muestra todos los departamentos si es que hay*/
     public static void mostrarTodosLosDepartamentos(){
         administrador.mostrarTodosLosDepartamentos();
     }
     
+    
+    public static void modificarNombreEdificio()throws IOException{
+        if(administrador.vacio()){
+            System.out.println("No existen Edificios");
+            return;
+        }
+        BufferedReader lectura = new  BufferedReader( new InputStreamReader( System.in));
+        System.out.println("Ingrese id del edificio que quiere modificar su nombre");
+        String idEdificio = lectura.readLine();
+        System.out.println("Ingrese el nuevo nombre del Edificio");
+        String NombreEdificio = lectura.readLine();
+        administrador.modificarNombreEdificio(NombreEdificio, idEdificio);
+    }
+        
     public static void eliminarEdificio()throws IOException{
         if(administrador.vacio()){
             System.out.println("No existen Edificios");

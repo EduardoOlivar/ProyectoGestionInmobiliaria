@@ -12,7 +12,7 @@ public class Edificio
     private String localidad;
     private String arquitecto;
     private ArrayList<Departamento> departamentos;
-    private HashMap<String,Departamento>departamentosId;
+    private HashMap<String,Departamento>departamentosId; //mapa departamentosId que facilita la bisqueda de un departamento por id;
 
     //constructor
     
@@ -28,11 +28,7 @@ public class Edificio
              
     }
 
-    //aqui iran metodos
-    
-    
-    //metodo para mostrar 
-
+    // metodo privado 1 para agregarDepartamento al mapa y coleccions, privado para que no se llame antes que el metodo 2 agregarDepartamento
     private void agregarDepartamento(Departamento departamento)
     {
         if(departamentosId.containsKey(departamento.getIdDepartamento())){
@@ -42,18 +38,14 @@ public class Edificio
         departamentosId.put(departamento.getIdDepartamento(), departamento);
         departamentos.add(departamento);
     }
+    
+    /*metodo 2 que que llama 1 al primer metodo agregar departamento para mandarle la instancia de este*/
     public void agregarDepartamento(String idDepartamento,String numeroPiso,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados)
     {
         Departamento departamento = new Departamento(idDepartamento,numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
         this.agregarDepartamento(departamento);     
     }   
-
-    public void agregarDepartamento(ArrayList<Departamento>departamentos){
-        int i;
-        for (i = 0;  i< departamentos.size(); i++) {
-            this.agregarDepartamento(departamentos.get(i));
-        }
-    }
+    
     public void eliminarDepartamentos(){
              departamentosId = new HashMap();
              departamentos = new ArrayList();
@@ -66,13 +58,15 @@ public class Edificio
            
         }
     }
+    
     public void BuscarDepartamento(String idDepartamento){
         int i;
         for(i = 0; i<departamentos.size();i++){
             if(departamentos.get(i).getIdDepartamento().equals(idDepartamento)){
                 System.out.println("codigo: Numero de piso     numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
                 System.out.println("     "+departamentos.get(i).getIdDepartamento()+":            "+departamentos.get(i).getNumeroPiso()+ "               "+departamentos.get(i).getNumeroDpto()+"                              "+departamentos.get(i).getValorDpto()+"                       "+departamentos.get(i).getOrientacion()+"                         "+departamentos.get(i).getCantidadBaños()+"                               "+departamentos.get(i).getCantidadDormitorios()+"                          "+departamentos.get(i).getMetrosCuadrados());
-            }
+            }else 
+                System.out.println("No existe departamento");
         }
     }
     public boolean existeDepartamento(String idDepartamento){return departamentosId.containsKey(idDepartamento);}
