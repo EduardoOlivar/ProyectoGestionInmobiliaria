@@ -100,9 +100,7 @@ public class GestionInmobiliaria {
         /*Se comprueba que exista el edificio y se le agrega departamento al edificio buscado por id*/
         if(administrador.existeEdifcio(idEdificio)){
             System.out.println("Ingrese numero de piso en el que se encuentra el departamento");
-            String numeroPiso = lectura.readLine();
-            System.out.println("Ingrese rol del departamento");
-            String rol = lectura.readLine();            
+            String numeroPiso = lectura.readLine();        
             System.out.println("Ingrese numero de departamento");
             String numeroDpto = lectura.readLine();     
             System.out.println("Ingrese valor en uf del departamento");
@@ -124,24 +122,29 @@ public class GestionInmobiliaria {
     
     /* Lista de departamentos predeterminados*/
     public static void llenadoDeDepartamentos(){
-        if(administrador.getListaEdificio().size() >=2){
+        if(administrador.getListaEdificio().size() >=3){
             
-            administrador.agregarDepartamentoAedificio("1", "1","1", "20", "sur", 1, 2, 36);
-            administrador.agregarDepartamentoAedificio("1", "1","2", "20", "sur", 1, 2, 36);
-            administrador.agregarDepartamentoAedificio("1", "2","3", "20", "norte", 1, 2, 36);
-            administrador.agregarDepartamentoAedificio("1", "2","4", "20", "norte", 1, 2, 36);         
-            administrador.agregarDepartamentoAedificio("2", "1","1", "35", "sur", 2, 3, 56);
-            administrador.agregarDepartamentoAedificio("2", "1","2", "35", "sur", 2, 3, 56);
-            administrador.agregarDepartamentoAedificio("2", "2","3", "35", "norte", 2, 3, 56);
-            administrador.agregarDepartamentoAedificio("2", "2","4", "35", "norte", 2, 3, 56);   
+            administrador.agregarDepartamentoAedificio("1", "1","1", "2000UF", "sur", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "1","2", "2000UF", "sur", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "2","3", "2000UF", "norte", 1, 2, 36);
+            administrador.agregarDepartamentoAedificio("1", "2","4", "2000UF", "norte", 1, 2, 36);         
+            administrador.agregarDepartamentoAedificio("2", "1","1", "3500UF", "sur", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "1","2", "3500UF", "sur", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "2","3", "3500UF", "norte", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("2", "2","4", "3500UF", "norte", 2, 3, 56);
+            administrador.agregarDepartamentoAedificio("3", "1","1", "3420UF", "Este", 2, 3, 50);
+            administrador.agregarDepartamentoAedificio("3", "1","2", "3420UF", "surOeste", 2, 3, 50);
+            administrador.agregarDepartamentoAedificio("3", "2","3", "3420UF", "norEste", 2, 3, 50);
+            administrador.agregarDepartamentoAedificio("3", "2","4", "3420UF", "norOeste", 2, 3, 50);
             return;
         }
-        System.out.println("Crear primero 2 edificios para acceder a esta opcion");
+        System.out.println("Crear primero 3 edificios para acceder a esta opcion");
     }
     
     public static void llenadoDeEdifcios(){
         administrador.agregarEdificios("Viana Miramar","Viana 161","Viña del mar","Roberto Rau");
         administrador.agregarEdificios("LADY","15 norte 242","Viña del mar","Mario Castañeda");
+        administrador.agregarEdificios("10 norte","10 norte 655","Viña del mar","Quiroz y Puelma Arquitectos");
     }
     
     public static void mostrarListadoDeEdifcios() {
@@ -172,5 +175,3 @@ public class GestionInmobiliaria {
     }
 }    
 
-
-    

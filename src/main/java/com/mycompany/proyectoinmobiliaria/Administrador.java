@@ -6,9 +6,7 @@ import java.util.*;
 public class Administrador {
     
     private ArrayList<Edificio> listaEdificio;
-    private HashMap<String,Edificio>edificiosId;
-
-    
+    private HashMap<String,Edificio>edificiosId;    
     private int idEdificio;
     private int idDepartamento;
 
@@ -122,31 +120,12 @@ public class Administrador {
         }
     }
     
-    public ArrayList<Edificio> getListaEdificio() {
-        return listaEdificio;
-    }
+    public ArrayList<Edificio> getListaEdificio() {return listaEdificio;}
+    public int getIdEdificio() {return idEdificio;}
+    public int getIdDepartamento() {return idDepartamento;}
 
-    public int getIdEdificio() {
-        return idEdificio;
-    }
-
-
-    public int getIdDepartamento() {
-        return idDepartamento;
-    }
-
-
-
-
-
-    public void setIdEdificio(int idEdificio) {
-        this.idEdificio = idEdificio;
-    }
-
-
-    public void setIdDepartamento(int idDepartamento) {
-        this.idDepartamento = idDepartamento;
-    }
+    public void setIdEdificio(int idEdificio) {this.idEdificio = idEdificio;}
+    public void setIdDepartamento(int idDepartamento) {this.idDepartamento = idDepartamento;}
     
 
 }
