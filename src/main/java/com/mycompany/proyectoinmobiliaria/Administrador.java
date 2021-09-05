@@ -48,9 +48,14 @@ public class Administrador {
     }    
 
     public void BuscarDepartamento(String idDepartamento){
-        int i;
-        for(i = 0; i<listaEdificio.size();i++){
-            listaEdificio.get(i).BuscarDepartamento(idDepartamento);
+        if(listaEdificio.isEmpty()){
+            System.out.println("No existen departamentos");
+        }
+        else{
+            int i;
+            for(i = 0; i<listaEdificio.size();i++){
+                listaEdificio.get(i).BuscarDepartamento(idDepartamento);
+            }
         }
     }
     
@@ -70,7 +75,7 @@ public class Administrador {
     
     public void mostrarNombreEdifcios(){
         if(edificiosId.isEmpty()){
-            System.out.println("No existen Edificiod");
+            System.out.println("No existen Edificios");
             return;
         }
         int i;
@@ -115,8 +120,13 @@ public class Administrador {
     }
  
     public void mostrarTodosLosDepartamentos(){
-        for (int i = 0; i < listaEdificio.size(); i++) {
-            listaEdificio.get(i).mostrarDepartamento();
+        if(listaEdificio.isEmpty()){
+            System.out.println("No existen departamentos");
+        }
+        else{
+            for (int i = 0; i < listaEdificio.size(); i++) {
+                listaEdificio.get(i).mostrarDepartamento();
+            }
         }
     }
     

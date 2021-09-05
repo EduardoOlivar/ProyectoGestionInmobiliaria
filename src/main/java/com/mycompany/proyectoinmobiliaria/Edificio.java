@@ -63,6 +63,7 @@ public class Edificio
         System.out.println("Lista de Departamentos");
         for (i = 0; i < departamentos.size(); i++) {
             System.out.println("Numero Dpto: "+departamentos.get(i).getNumeroDpto()+", Orientacion: "+departamentos.get(i).getOrientacion()+", Valor(UF): "+departamentos.get(i).getValorDpto()+", Cantidad de baños: "+departamentos.get(i).getCantidadBaños()+", Cantidad de dormitorios: "+departamentos.get(i).getCantidadDormitorios()+", Metros cuadrado: "+departamentos.get(i).getMetrosCuadrados());                    
+           
         }
     }
     public void BuscarDepartamento(String idDepartamento){
