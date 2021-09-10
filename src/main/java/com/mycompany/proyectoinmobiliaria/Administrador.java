@@ -7,31 +7,34 @@ public class Administrador {
     
     private ArrayList<Edificio> listaEdificio; // lista de edificios
     private HashMap<String,Edificio>edificiosId; // Mapa EdificiosId que facilita el buscado de edificio por su clave id   
-    private int idEdificio;
-    private int idDepartamento;
+    private HashMap<String,Edificio>edificiosNombre;// Mapa edificiosNombre, buscamos por nombre de edificio. 
+    private int idAdministrador;
+
 
     public Administrador() {
         listaEdificio = new ArrayList();
         edificiosId = new HashMap();
-        idEdificio = 0;
-        idDepartamento = 0;
+        edificiosNombre = new HashMap();
+        idAdministrador = 0;
     }
     //metodo privado que agregarEdificios,verifica si ya existe el edificio. si no existe los agrega al mapa edficiosId y listaEdificios
-    private void agregarEdificios(Edificio edificio){
-        if(edificiosId.containsKey(edificio.getId())){
-            System.out.println("Edificio " + edificio.getNombre() + "existe");
-            return;
+    private boolean agregarEdificios(Edificio edificio){
+        if(edificiosNombre.containsKey(edificio.getNombre())){
+            return false;
         }
         listaEdificio.add(edificio);
         edificiosId.put(edificio.getId(), edificio);
-        System.out.println("El id del edificio  "+edificio.getNombre() + " es: "+edificio.getId());
+        edificiosNombre.put(edificio.getNombre(), edificio);
+        return true;
     }
     
     //metodo2 que recive la instancia de un edificio nuevo y lo envia por parametro al agregarEdicios metodo 1;
-    public void agregarEdificios(String nombre, String direccion, String localidad, String arquitecto){
-        this.idEdificio = this.idEdificio + 1;
-        Edificio nuevoEdificio = new Edificio(String.valueOf(idEdificio),nombre,direccion,localidad,arquitecto);
-        this.agregarEdificios(nuevoEdificio);
+    public boolean agregarEdificios(String nombre, String direccion, String localidad, String arquitecto){
+        this.idAdministrador = this.idAdministrador + 1;
+        Edificio nuevoEdificio = new Edificio(String.valueOf(idAdministrador),nombre,direccion,localidad,arquitecto);
+        if(this.agregarEdificios(nuevoEdificio))
+            return true;
+        return false;
     }
    
     public void modificarNombreEdificio(String nombre, String idEdificio){
@@ -50,53 +53,65 @@ public class Administrador {
             return true;
         }
         return false;        
+    } 
+    
+    public boolean existeDepartamentos(){
+        int i;
+        for (i = 0; i < listaEdificio.size(); i++) {
+            if(listaEdificio.get(i).existeDepartamento()){
+              return true;
+            }
+        }
+        return false;        
     }    
 
-    public void BuscarDepartamento(String idDepartamento){
+    public boolean BuscarDepartamento(String idDepartamento){
         if(vacio()){
             System.out.println("No existen departamentos");
+            return false;
         }
         else{
             int i;
             for(i = 0; i<listaEdificio.size();i++){
-                listaEdificio.get(i).BuscarDepartamento(idDepartamento);
+                if(listaEdificio.get(i).BuscarDepartamento(idDepartamento))
+                  return true;
             }
+            return false;
         }
     }
     
     public void agregarDepartamentoAedificio(String idEdificio,String numeroPiso,String numeroDpto, String valorDpto, String orientacion, int cantidadBaños, int cantidadDormitorios, double metrosCuadrados){
-        if(edificiosId.containsKey(idEdificio)){         
-            this.idDepartamento = this.idDepartamento + 1;
-            Departamento nuevoDepartamento = new Departamento(String.valueOf(idDepartamento),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);                
-            edificiosId.get(idEdificio).agregarDepartamento(String.valueOf(idDepartamento),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
-            System.out.println("El codigo del departamento "+nuevoDepartamento.getNumeroDpto()+" es: " +idDepartamento);
+        if(edificiosId.containsKey(idEdificio)){      
+            int idDpto = 0;
+            for (int i = 0; i<listaEdificio.size(); i++) {
+                for (int j = 0; j < listaEdificio.get(i).getDepartamentos().size(); j++) {
+                    if(existeDepartamento(String.valueOf(idDpto))){
+                        idDpto = idDpto + 1;
+                    }
+                    else
+                        break;
+                }
+            }
+          
+            Departamento nuevoDepartamento = new Departamento(String.valueOf(idDpto),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);                
+            edificiosId.get(idEdificio).agregarDepartamento(String.valueOf(idDpto),numeroPiso,numeroDpto,valorDpto,orientacion,cantidadBaños,cantidadDormitorios,metrosCuadrados);
+            System.out.println("El Id para el departamento numero "+nuevoDepartamento.getNumeroDpto()+" del edificio "+ edificiosId.get(idEdificio).getNombre()+" es: " +idDpto);
             return;           
         }
     }
-    
+    // retorna si esta vacio
     public boolean vacio(){return listaEdificio.isEmpty();}
-    
+    // retorna si hay edficio o no 
     public boolean existeEdifcio(String idEdificio){return edificiosId.containsKey(idEdificio);}
     
-    public void mostrarNombreEdifcios(){
-        if(edificiosId.isEmpty()){
-            System.out.println("No existen Edificios");
-            return;
-        }
-        int i;
-        System.out.println("codigo:     nombre edifciio        direccion          localidad         arquitecto");
-        for(i=0; i<listaEdificio.size(); i++){
-            System.out.println("   "+listaEdificio.get(i).getId()+":-"+listaEdificio.get(i).getNombre()+"           "+listaEdificio.get(i).getDireccion()+"          "+listaEdificio.get(i).getLocalidad()+"       "+listaEdificio.get(i).getArquitecto()+"    ");
-        }
-    }
-    
+    // elimina edificio a partir de su id
     public Edificio  eliminarEdificio(String idEdificio){
         if(!edificiosId.containsKey(idEdificio)){
             System.out.println("No existe un Edificio con el codigo ingresado");
             return null;
 
         }
-        if(listaEdificio.size()<3){
+        if(listaEdificio.size()<2){
             System.out.println("no existe otro edificio, por lo que todos los datos seran eliminados");
             Edificio edificioEliminado = edificiosId.remove(idEdificio);
             int i;
@@ -107,8 +122,7 @@ public class Administrador {
                 }
             }
                 listaEdificio.get(i).eliminarDepartamentos();
-                this.idEdificio = 0;
-                this.idDepartamento = 0;
+                this.idAdministrador = 0;
                 return edificioEliminado;
             
         }
@@ -123,7 +137,7 @@ public class Administrador {
         }
         return edificioEliminado;
     }
- 
+    //muestra todos los departamentos en la lista
     public void mostrarTodosLosDepartamentos(){
         if(listaEdificio.isEmpty() ){
             System.out.println("No existen departamentos");
@@ -138,13 +152,21 @@ public class Administrador {
             }
         }
     }
+    /* Funcion para mostrar los dptos por precio */
+    public void mostrarDepartamentosPorPrecios(int valorInicial, int valorFinal)
+    {
+      for(int i = 0 ; i < listaEdificio.size(); i++)
+      {
+          System.out.println("En el edificio "+ listaEdificio.get(i).getNombre());
+          listaEdificio.get(i).mostrarDptosPorPrecios(valorInicial, valorFinal);
+      }
+    }
     
+    //getter
     public ArrayList<Edificio> getListaEdificio() {return listaEdificio;}
-    public int getIdEdificio() {return idEdificio;}
-    public int getIdDepartamento() {return idDepartamento;}
-
-    public void setIdEdificio(int idEdificio) {this.idEdificio = idEdificio;}
-    public void setIdDepartamento(int idDepartamento) {this.idDepartamento = idDepartamento;}
-    
-
+    public HashMap<String,Edificio>getEdificiosNombre(){return edificiosNombre;}
+    public HashMap<String,Edificio>getEdificiosId(){return edificiosId;}
+    public int getIdAdministrador() {return idAdministrador;}
+    //setter
+    public void setIdAdministrador(int idEdificio) {this.idAdministrador = idAdministrador;}
 }

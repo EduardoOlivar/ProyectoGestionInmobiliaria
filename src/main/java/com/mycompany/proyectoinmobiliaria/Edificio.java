@@ -11,7 +11,7 @@ public class Edificio
     private String direccion;
     private String localidad;
     private String arquitecto;
-    private ArrayList<Departamento> departamentos;
+    private ArrayList<Departamento> listaDepartamentos;
     private HashMap<String,Departamento>departamentosId; //mapa departamentosId que facilita la bisqueda de un departamento por id;
 
     //constructor
@@ -23,7 +23,7 @@ public class Edificio
         this.direccion = direccion;
         this.localidad = localidad;
         this.arquitecto = arquitecto;
-        this.departamentos = new ArrayList(); // por ahora ira asi para poder hacer el entregable 2
+        this.listaDepartamentos = new ArrayList(); // por ahora ira asi para poder hacer el entregable 2
         departamentosId = new HashMap();
              
     }
@@ -36,7 +36,7 @@ public class Edificio
             return;
         }
         departamentosId.put(departamento.getIdDepartamento(), departamento);
-        departamentos.add(departamento);
+        listaDepartamentos.add(departamento);
     }
     
     /*metodo 2 que que llama 1 al primer metodo agregar departamento para mandarle la instancia de este*/
@@ -48,44 +48,74 @@ public class Edificio
     
     public void eliminarDepartamentos(){
              departamentosId = new HashMap();
-             departamentos = new ArrayList();
+             listaDepartamentos = new ArrayList();
     }
+    
     public void mostrarDepartamento(){
         int i;
         System.out.println("Lista de Departamentos");
-        for (i = 0; i < departamentos.size(); i++) {
-            System.out.println("Numero Dpto: "+departamentos.get(i).getNumeroDpto()+", Orientacion: "+departamentos.get(i).getOrientacion()+", Valor(UF): "+departamentos.get(i).getValorDpto()+", Cantidad de baños: "+departamentos.get(i).getCantidadBaños()+", Cantidad de dormitorios: "+departamentos.get(i).getCantidadDormitorios()+", Metros cuadrado: "+departamentos.get(i).getMetrosCuadrados());                    
+        for (i = 0; i < listaDepartamentos.size(); i++) {
+            System.out.println("Numero Dpto: "+listaDepartamentos.get(i).getNumeroDpto()+", Orientacion: "+listaDepartamentos.get(i).getOrientacion()+", Valor(UF): "+listaDepartamentos.get(i).getValorDpto()+", Cantidad de baños: "+listaDepartamentos.get(i).getCantidadBaños()+", Cantidad de dormitorios: "+listaDepartamentos.get(i).getCantidadDormitorios()+", Metros cuadrado: "+listaDepartamentos.get(i).getMetrosCuadrados());                    
            
         }
+        
+    }
+    //busca departamentos por el id
+    public boolean BuscarDepartamento(String idDepartamento){
+        int i;
+
+        for(i = 0; i<listaDepartamentos.size();i++){
+            if(listaDepartamentos.get(i).getIdDepartamento().equals(idDepartamento)){
+              return true;
+            }
+        }
+        return false;
+    }
+    //comprueba que si este vacia o no la lista departamento
+    public boolean existeDepartamento()
+    {
+      if(listaDepartamentos.isEmpty()){
+        return false;
+      }
+      return true;
+    }
+    //muestra los departamentos
+    public void mostrarDptosPorPrecios(int valorInicio,int valorFinal)
+    {
+      int i;
+      boolean existe = false;
+      for( i = 0; i < listaDepartamentos.size(); i++)
+      {
+        if((Integer.parseInt(listaDepartamentos.get(i).getValorDpto()) >= valorInicio) && (Integer.parseInt(listaDepartamentos.get(i).getValorDpto()) <= valorFinal))
+        {
+          System.out.println("el departamento, con id "+listaDepartamentos.get(i).getIdDepartamento()+ " tiene el valor de " + listaDepartamentos.get(i).getValorDpto()+"UF");
+          existe = true;
+        }
+      }
+      if(!existe)
+      {
+        System.out.println("Sin coincidencias en el rango");
+      }
     }
     
-    public void BuscarDepartamento(String idDepartamento){
-        int i;
-        for(i = 0; i<departamentos.size();i++){
-            if(departamentos.get(i).getIdDepartamento().equals(idDepartamento)){
-                System.out.println("codigo: Numero de piso     numero de departamento            valor en uf                 orientacion               cantidad de baños            cantidad de dormitorios       metro cuadrados");
-                System.out.println("     "+departamentos.get(i).getIdDepartamento()+":            "+departamentos.get(i).getNumeroPiso()+ "               "+departamentos.get(i).getNumeroDpto()+"                              "+departamentos.get(i).getValorDpto()+"                       "+departamentos.get(i).getOrientacion()+"                         "+departamentos.get(i).getCantidadBaños()+"                               "+departamentos.get(i).getCantidadDormitorios()+"                          "+departamentos.get(i).getMetrosCuadrados());
-            }else 
-                System.out.println("No existe departamento");
-        }
-    }
     public boolean existeDepartamento(String idDepartamento){return departamentosId.containsKey(idDepartamento);}
     public Departamento buscarDepartamento(String idDepartamento){return departamentosId.get(idDepartamento);}
     public boolean buscarDepartamentoE(String idDepartamento){return departamentosId.containsKey(idDepartamento);}
 
     //getter
-    public String getId(){return id;}
+    public String getId(){return id;}    
     public String getNombre(){return nombre;}
     public String getLocalidad(){return localidad;}
     public String getDireccion(){return direccion;}
     public String getArquitecto(){return arquitecto;}
-    public ArrayList<Departamento> getDepartamentos(){return departamentos;}
+    public HashMap<String,Departamento> getDepartamentosId(){return departamentosId;}
+    public ArrayList<Departamento> getDepartamentos(){return listaDepartamentos;}
     //setter
     public void setId(String id){this.id = id;}
     public void setNombre(String nombre){this.nombre = nombre;}
     public void setLocalidad(String localidad){this.localidad = localidad;}
     public void setDireccion(String direccion){this.direccion = direccion;}
     public void setArquitecto(String arquitecto){this.arquitecto = arquitecto;}
-    public void setDepartamentos(ArrayList<Departamento>departamentos){this.departamentos = departamentos;}
+    public void setDepartamentos(ArrayList<Departamento>departamentos){this.listaDepartamentos = departamentos;}
 
 }
